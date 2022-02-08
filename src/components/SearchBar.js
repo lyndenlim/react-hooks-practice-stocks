@@ -1,16 +1,18 @@
 import React from "react";
 
-function SearchBar() {
+function SearchBar({ category, setCategory, isClicked,  setIsClicked}) {
+  
   return (
     <div>
       <strong>Sort by:</strong>
       <label>
         <input
+
           type="radio"
           value="Alphabetically"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={isClicked === "Alphabetically"}
+          onChange={e => setIsClicked(e.target.value)}
         />
         Alphabetically
       </label>
@@ -19,15 +21,15 @@ function SearchBar() {
           type="radio"
           value="Price"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={isClicked === "Price"}
+          onChange={e => setIsClicked(e.target.value)}
         />
         Price
       </label>
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={e => setCategory(e.target.value)} value={category}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
